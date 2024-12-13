@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mintah/flask-app:1.0  # Image tag
+    container_name: flask-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./files_directory:/app/data
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
